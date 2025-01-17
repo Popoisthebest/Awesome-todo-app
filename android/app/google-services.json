@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "16459790914",
+    "project_id": "awesome-todo-app-ba35f",
+    "storage_bucket": "awesome-todo-app-ba35f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16459790914:android:c4a7a8f75ba4e0c8454bdb",
+        "android_client_info": {
+          "package_name": "com.flutter_mastering.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBisogANHCtcNf7EeV-yQ-nZUCIDof5RnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
