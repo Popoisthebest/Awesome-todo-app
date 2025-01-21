@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mastering/models/todo_model.dart';
-import 'package:flutter_mastering/screens/todo_screens/todo_screen.dart';
+import 'package:flutter_mastering/screens/todo_screens/old_todo_screen.dart';
 import 'package:flutter_mastering/screens/todo_screens/widgets/neumorphism_container.dart';
 import 'package:provider/provider.dart';
 
-class TodoAddScreen extends StatelessWidget {
-  final formKey = GlobalKey<FormState>();
-  TodoAddScreen({super.key});
+class OldTodoAddScreen extends StatelessWidget {
+  OldTodoAddScreen({super.key});
+
+  final GlobalKey<FormState> addFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,7 @@ class TodoAddScreen extends StatelessWidget {
                     Transform.translate(
                       offset: const Offset(5, 0),
                       child: Form(
-                        key: formKey,
+                        key: addFormKey,
                         child: TextFormField(
                           controller: textEditingController,
                           cursorColor: Colors.grey,
@@ -86,14 +87,14 @@ class TodoAddScreen extends StatelessWidget {
 
               GestureDetector(
                 onTap: () {
-                  if (formKey.currentState!.validate()) {
+                  if (addFormKey.currentState!.validate()) {
                     context
                         .read<TodoModel>()
                         .addTodo(textEditingController.text);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const TodoScreen(),
+                        builder: (context) => const OldTodoScreen(),
                       ),
                     );
                   }

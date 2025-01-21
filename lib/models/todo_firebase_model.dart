@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_mastering/models/todo_model.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -45,23 +46,23 @@ class TodoFirebaseModel {
             )
                 .then(
               (value) {
-                print('로그인 성공');
+                debugPrint('로그인 성공');
               },
             );
           } on FirebaseAuthException catch (e) {
             if (e.code == 'user-not-found') {
-              print('No user found for that email.');
+              debugPrint('No user found for that email.');
             } else if (e.code == 'wrong-password') {
-              print('Wrong password provided for that user.');
+              debugPrint('Wrong password provided for that user.');
             }
           }
         },
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
+        debugPrint('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
+        debugPrint('The account already exists for that email.');
       }
     } catch (e) {
       print(e);
@@ -78,14 +79,14 @@ class TodoFirebaseModel {
       )
           .then(
         (value) {
-          print('로그인 성공');
+          debugPrint('로그인 성공');
         },
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email.');
+        debugPrint('No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
+        debugPrint('Wrong password provided for that user.');
       }
     }
   }

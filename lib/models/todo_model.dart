@@ -33,16 +33,16 @@ class TodoModel with ChangeNotifier {
         if (snapshot.exists && snapshot.data() != null) {
           _userName = snapshot.data()!['userName'];
           _userUid = user.uid;
-          print('userName: $_userName, userUid: $_userUid');
+          debugPrint('userName: $_userName, userUid: $_userUid');
           notifyListeners();
         } else {
-          print('Firestore 문서가 비어 있습니다.');
+          debugPrint('Firestore 문서가 비어 있습니다.');
         }
       } else {
-        print('User Data가 존재하지 않음 -> 로그인되지 않음.');
+        debugPrint('User Data가 존재하지 않음 -> 로그인되지 않음.');
       }
     } catch (e) {
-      print('Error in getUserNames: $e');
+      debugPrint('Error in getUserNames: $e');
     }
   }
 
@@ -56,7 +56,7 @@ class TodoModel with ChangeNotifier {
     await getUserNames();
     // _userUid 값 검증
     if (_userUid.isEmpty) {
-      print('Error: _userUid is null or empty. Cannot fetch todos.');
+      debugPrint('Error: _userUid is null or empty. Cannot fetch todos.');
     } else {
       // Firestore 실시간 데이터 가져오기
       FirebaseFirestore.instance
@@ -72,19 +72,19 @@ class TodoModel with ChangeNotifier {
             _dataExist = true; // 데이터 존재 여부를 true로 설정
             _todoList = event.data()!; // Firestore 데이터 저장
             _id = int.parse(event.data()!.keys.last) + 1; // 새로운 ID 계산
-            print(_todoList);
-            print('todoList 불러오기 성공');
+            debugPrint(_todoList.toString());
+            debugPrint('todoList 불러오기 성공');
           } else {
             // 데이터가 없거나 문서가 비어 있을 경우
             _todoList = {}; // 빈 Map으로 초기화
             _dataExist = false; // 데이터 없음 표시
-            print('Data is not exist in Firestore.');
+            debugPrint('Data is not exist in Firestore.');
           }
           notifyListeners(); // UI 업데이트
         },
         onError: (error) {
           // 오류 발생 시 처리
-          print('Firestore error: $error');
+          debugPrint('Firestore error: $error');
         },
       );
     }
@@ -99,10 +99,10 @@ class TodoModel with ChangeNotifier {
   //       _id = int.parse(data.keys.last) + 1;
   //       notifyListeners();
   //     } else {
-  //       print('data is not exist');
+  //       debugPrint('data is not exist');
   //     }
   //   },
-  //   onError: (e) => print("Error getting document: $e"),
+  //   onError: (e) => debugPrint("Error getting document: $e"),
   // );
 
   // _userDataExist = false;
