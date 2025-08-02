@@ -2,8 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mastering/firebase_options.dart';
 import 'package:flutter_mastering/models/login_model.dart';
-import 'package:flutter_mastering/models/todo_model.dart';
+import 'package:flutter_mastering/models/old_todo_model.dart';
+import 'package:flutter_mastering/models/user_data_model.dart';
 import 'package:flutter_mastering/screens/login_screens/login_screen.dart';
+import 'package:flutter_mastering/screens/todo_add_screens/todo_add_screen.dart';
 import 'package:flutter_mastering/screens/todo_screens/todo_screen.dart';
 import 'package:flutter_mastering/screens/welcome_screens/welcome_screen.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +31,8 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => LoginModel()),
-        ChangeNotifierProvider(create: (_) => TodoModel()),
+        ChangeNotifierProvider(create: (_) => OldTodoModel()),
+        ChangeNotifierProvider(create: (_) => UserDataModel()),
       ],
       child: MaterialApp(
         initialRoute: '/welcome',
@@ -37,6 +40,7 @@ class _MyAppState extends State<MyApp> {
           '/welcome': (context) => const WelcomeScreen(),
           '/login': (context) => const LoginScreen(),
           '/todo_screen': (context) => const TodoScreen(),
+          '/todo_add_screen': (context) => const TodoAddScreen(),
         },
         debugShowCheckedModeBanner: false,
         home: const WelcomeScreen(),

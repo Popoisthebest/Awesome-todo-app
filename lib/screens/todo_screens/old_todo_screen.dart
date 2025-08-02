@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mastering/models/todo_model.dart';
+import 'package:flutter_mastering/models/old_todo_model.dart';
 import 'package:flutter_mastering/screens/todo_screens/old_todo_add_screen.dart';
+import 'package:flutter_mastering/screens/todo_screens/widgets/todo_card_component.dart';
 import 'package:flutter_mastering/screens/welcome_screens/welcome_screen.dart';
 import 'package:flutter_mastering/screens/todo_screens/widgets/neumorphism_container.dart';
-import 'package:flutter_mastering/screens/todo_screens/widgets/todo_card_component.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 
@@ -25,8 +25,8 @@ class _OldTodoScreenState extends State<OldTodoScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<TodoModel>().initAuthSystem();
-    userName = context.read<TodoModel>().getUserName;
+    context.read<OldTodoModel>().initAuthSystem();
+    userName = context.read<OldTodoModel>().getUserName;
   }
 
   @override
@@ -55,7 +55,7 @@ class _OldTodoScreenState extends State<OldTodoScreen> {
                   },
                   icon: const Icon(Icons.output_rounded)),
               // Provider 관여 부분
-              Consumer<TodoModel>(
+              Consumer<OldTodoModel>(
                 builder: (context, todo, child) {
                   return NeumorphismContainer(
                     padding: const EdgeInsets.all(20),
@@ -64,7 +64,7 @@ class _OldTodoScreenState extends State<OldTodoScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '${context.read<TodoModel>().getUserName}\'s Todos',
+                          '${context.read<OldTodoModel>().getUserName}\'s Todos',
                           style: const TextStyle(
                               fontSize: 24, fontWeight: FontWeight.bold),
                         ),
@@ -79,7 +79,7 @@ class _OldTodoScreenState extends State<OldTodoScreen> {
                 },
               ),
               const SizedBox(height: 20),
-              Consumer<TodoModel>(
+              Consumer<OldTodoModel>(
                 builder: (context, todo, child) {
                   return Expanded(
                     child: NeumorphismContainer(

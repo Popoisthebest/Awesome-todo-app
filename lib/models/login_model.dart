@@ -11,6 +11,7 @@ class LoginModel with ChangeNotifier {
   Future<bool> getIsLoginSuccess() async {
     bool isLoginSuccess = true;
     debugPrint('로그인 모델 $isLoginSuccess');
+    notifyListeners();
     return isLoginSuccess;
   }
 
@@ -30,7 +31,6 @@ class LoginModel with ChangeNotifier {
         (value) {
           debugPrint('로그인 모델 로그인 성공');
           getIsLoginSuccess();
-          notifyListeners();
         },
       );
     } on FirebaseAuthException catch (e) {

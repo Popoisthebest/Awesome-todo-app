@@ -1,30 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mastering/models/old_todo_model.dart';
-import 'package:flutter_mastering/models/user_data_model.dart';
-import 'package:provider/provider.dart';
 
-class TodoScaffold extends StatefulWidget {
-  const TodoScaffold({
+class TodoAddScaffold extends StatelessWidget {
+  const TodoAddScaffold({
     super.key,
-    required this.todoAppBar,
-    required this.todoList,
-    required this.todoAddButton,
+    required this.todoAddAppBar,
+    required this.todoAddTextField,
   });
 
-  final Widget todoAppBar;
-  final Widget todoList;
-  final Widget todoAddButton;
-
-  @override
-  State<TodoScaffold> createState() => _TodoScaffoldState();
-}
-
-class _TodoScaffoldState extends State<TodoScaffold> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<OldTodoModel>().getUserNames();
-  }
+  final Widget todoAddAppBar;
+  final Widget todoAddTextField;
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +32,15 @@ class _TodoScaffoldState extends State<TodoScaffold> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  widget.todoAppBar,
-                  const SizedBox(height: 20),
-                  widget.todoList,
-                  widget.todoAddButton,
+                  Column(
+                    children: [
+                      todoAddAppBar,
+                      const SizedBox(height: 44),
+                      todoAddTextField,
+                    ],
+                  ),
                 ],
               ),
             ),

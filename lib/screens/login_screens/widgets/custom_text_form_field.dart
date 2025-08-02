@@ -6,6 +6,7 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     required this.title,
     required this.hintText,
+    required this.isIcon,
     required this.icon,
     required this.isPassword,
     required this.textEditingController,
@@ -13,6 +14,7 @@ class CustomTextFormField extends StatelessWidget {
 
   final String title;
   final String hintText;
+  final bool isIcon;
   final Widget icon;
   final bool isPassword;
   final TextEditingController textEditingController;
@@ -62,7 +64,7 @@ class CustomTextFormField extends StatelessWidget {
                   decoration: InputDecoration(
                     floatingLabelAlignment: FloatingLabelAlignment.center,
                     border: InputBorder.none,
-                    icon: icon,
+                    icon: isIcon ? icon : null,
                     iconColor: Colors.black.withOpacity(0.3499999940395355),
                     hintText: hintText,
                     hintStyle: TextStyle(

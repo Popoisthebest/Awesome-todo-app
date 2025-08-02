@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_mastering/models/todo_model.dart';
+import 'package:flutter_mastering/models/old_todo_model.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class TodoFirebaseModel {
@@ -11,8 +11,8 @@ class TodoFirebaseModel {
   String userInfo = "";
   //flutter_secure_storage 사용을 위한 초기화 작업
   static const storage = FlutterSecureStorage();
-  // TodoModel 생성자
-  TodoModel todoModel = TodoModel();
+  // OldTodoModel 생성자
+  OldTodoModel OldtodoModel = OldTodoModel();
 
   Future<void> signUp(
       String emailTextEditingController,

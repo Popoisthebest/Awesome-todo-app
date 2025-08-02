@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mastering/models/todo_model.dart';
+import 'package:flutter_mastering/models/old_todo_model.dart';
 import 'package:flutter_mastering/screens/todo_screens/old_todo_screen.dart';
 import 'package:flutter_mastering/screens/todo_screens/widgets/neumorphism_container.dart';
 import 'package:provider/provider.dart';
@@ -89,7 +89,7 @@ class OldTodoAddScreen extends StatelessWidget {
                 onTap: () {
                   if (addFormKey.currentState!.validate()) {
                     context
-                        .read<TodoModel>()
+                        .read<OldTodoModel>()
                         .addTodo(textEditingController.text);
                     Navigator.push(
                       context,

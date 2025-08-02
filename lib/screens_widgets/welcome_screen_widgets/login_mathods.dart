@@ -64,12 +64,7 @@ class LoginMathods extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
-                        ),
-                      );
+                      Navigator.pushNamed(context, '/login');
                     },
                     child: const Text(
                       '로그인',

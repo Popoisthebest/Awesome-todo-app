@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class TodoModel with ChangeNotifier {
+class OldTodoModel with ChangeNotifier {
   Map<String, dynamic> _todoList = {};
   int _id = 0;
   bool _dataExist = false;
 
-  String _userName = '';
+  late String _userName = '';
   late String _userUid = '';
 
   // _todoList Getter
